@@ -7,7 +7,7 @@ body
 {
   margin: 0px;
   padding: 0px;
-  background: #404040;
+  background: #5680E9;
   font-family: 'Quicksand', sans-serif;
   font-size: 12pt;
   font-weight: 400;
@@ -314,8 +314,11 @@ ul.contact li a:before
 {
   overflow: hidden;
   padding: 10em 0em 10em 0em;
-  background: url(images/bg01.jpg) repeat-x center top;
+  background: url(/static/images/matatu.jpg);
   border-bottom: 20px solid rgba(0,0,0,.5);
+  background-size: cover;
+      background-position-y: -70px;
+
 }
 
 #header
@@ -372,7 +375,7 @@ ul.contact li a:before
 {
   display: inline-block;
   padding: 0em 2em;
-  background: #ff8a0e;
+  background: #84ceeb;
   text-align: center;
 }
 
