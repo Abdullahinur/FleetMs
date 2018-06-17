@@ -30,7 +30,8 @@ def emailView(request):
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message, from_email, ['admin@example.com'])
+                send_mail(subject, message, from_email,
+                          ['thisismytestemail12moringa@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('fleet:success')
@@ -38,7 +39,7 @@ def emailView(request):
 
 
 def successView(request):
-    return HttpResponse('Success! Thank you for your message.')
+    return render(request, 'success.html')
 
 
 def home(request):
