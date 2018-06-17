@@ -18,7 +18,19 @@
 
 </head>
 <body>
-  {%include 'fleet_base/partials/_navbar.html' %}
+  <nav style="margin-bottom: -1px" class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+
+        </a>
+      </div>
+    </div>
+  </nav>
+  {% block icon %}
+  {% endblock %}
+  {% block css_main %}
+  {% endblock %}
     {% block content %}
      {%endblock%}
 

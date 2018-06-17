@@ -1,6 +1,60 @@
 {% extends "fleet_base/base.html" %}
 
+
+{% load staticfiles %}
+{% block icon %}
+<link rel="icon" href="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Bus-icon.png">
+{% endblock %}
+{% block css_main %}
+<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
+
+{% endblock %}
 {% block content %}
-{% include 'fleet_base/partials/_messages.html' %}
-<h1>Hello World</h1>
+
+<html>
+<head>
+
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+</div>
+<div>
+  <div>
+    <h1>FleetMS</h1>
+  </div>
+  {% if user.is_authenticated or supervisor.is_authenticated %}
+
+    <div class="text" style="text-align: center; color: black;"><a href="{% url 'fleet:sacco-signup' %}" >Sacco</a></div>
+{% else %}
+    <div class="text" style="text-align: center; color: black;"><a href="{% url 'fleet:loginViews' %}">Sacco</a></div>
+  {% endif %}
+        <div class="text" style="text-align: center; color: black;"><a href="{% url 'fleet:owner-signup' %}">Owner</a></div>
+
+        <div class="text" style="text-align: center; color: black;"><a>Supervisor</a></div>
+<div class="container-fluid">
+  <div class="synopsis" style="width: 50vw; float: left; display: inline;">
+    <h1>New approach to an old system</h1>
+    <h4>Easily manage your your fleet of matatus as an owner, supervisor or sacco.</h4>
+  </div>
+  <div class="join" style="float: right; width: 40vw; display: inline; border: 5px black solid; border-radius: 10px; padding: 10px;">
+    <h1>Join our community</h1>
+    <div style="overflow: hidden; width: 100px; height: 100px; border-radius: 50%;">
+      <img src="https://i.ytimg.com/vi/Rxc95HinnmI/maxresdefault.jpg" style="width: 200px; margin-left: -3vw;">
+    </div>
+    <h4>This website changed my life!</h4>
+    <h6>-Abdullahi Abdullahi; Owner</h6>
+    <a data-toggle="modal" data-target="#SignUpIn"><h5 style="margin-top:-10px;">Join now!</h6></a>
+    </div>
+  </div>
+
+
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
 {% endblock %}
