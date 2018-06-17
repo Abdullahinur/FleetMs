@@ -1,66 +1,87 @@
-{% extends "fleet_base/base.html" %}
+{% extends "fleet_base/base.html" %} {% load staticfiles %} {% block css_main %}
 
-
-{% load staticfiles %}
-
-{% block css_main %}
-
-<link href="{% static "fonts.css" %}" rel="stylesheet" type="text/css" media="all" />
-
-
-{% endblock %}
-{% block content %}
+<link href="{% static "fonts.css" %}" rel="stylesheet" type="text/css" media="all" /> {% endblock %} {% block content %}
 
 
 
 <div id="header-wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<h1><a href="#">Fleet MS</a></h1>
-			<div id="menu">
-				<ul>
-					<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-					<li><a href="#" accesskey="3" title="">About Us</a></li>
-					<li><a href="#" accesskey="4" title="">Careers</a></li>
-					<li><a href="#" accesskey="5" title="">Contact Us</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+  <div id="header" class="container">
+    <div id="logo">
+      <h1><a href="#">Fleet MS</a></h1>
+      <div id="menu">
+        <ul>
+          <li><a href="{% url 'fleet:clients' %}" accesskey="2" title="">Our Clients</a></li>
+          <li><a href="{% url 'fleet:about' %}" accesskey="3" title="">About Us</a></li>
+          <li><a href="#" accesskey="5" title="">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <div id="page-wrapper">
-	<div id="page" class="container">
-		<div class="title">
-			<h2>Welcome to Fleet Ms</h2>
-		</div>
-		<p>This is <strong>Fleet Ms</strong>, a currently free, sacco fleet management system design to take away the hassle of written logs, mistracked expendetures and income, as well as vehicle statuses. <a href="{% url 'fleet:select' %}" rel="nofollow">FLEETMS</a>will help owners of matatus and individuals working for saccos to effeciently manaage day to day operations.
-	</div>
-</div>
-<div>
-  <div>
-    <h1>FleetMS</h1>
-  </div>
-    <div><a href="{% url 'fleet:sacco-signup' %}" >Sacco</a></div>
-
-        <div ><a href="{% url 'fleet:owner-signup' %}">Owner</a></div>
-
-        <div><a href="{% url 'fleet:sup-signup' %}">Supervisor</a></div>
-<div >
-  <div >
-    <h1>New approach to an old system</h1>
-    <h4>Easily manage your your fleet of matatus as an owner, supervisor or sacco.</h4>
-  </div>
-  <div >
-    <h1>Join our community</h1>
-    <div >
-      <img src="" alt="happy-customer" >
+  <div id="page" class="container">
+    <div class="title">
+      <h2>Welcome to Fleet Ms</h2>
     </div>
-    <h4>This website changed my life!</h4>
-    <h6>-Abdullahi Abdullahi; Owner</h6>
-    <a href="{% url 'fleet:select' %}"><h5>Join now!</h6></a>
-    </div>
+    <p>This is <strong>Fleet Ms</strong>, a currently free, sacco fleet management system design to take away the hassle of written logs, mistracked expendetures and income, as well as vehicle statuses. <a href="{% url 'fleet:select' %}" rel="nofollow">FLEETMS</a>will
+      help owners of matatus and individuals working for saccos to effeciently manaage day to day operations.
   </div>
-
-
 </div>
+<div id="wrapper">
+  <div id="three-column" class="container">
+    <div><span class="arrow-down"></span></div>
+    <div id="tbox1">
+      <div class="title">
+        <h2>Sacco</h2>
+      </div>
+      <p>Sign Up here to register a Sacco and get started if your are a sacco owner or represntative.</p>
+      <div><a class="button" style="background-color: #8860D0;" href="{% url 'fleet:sacco-signup' %}">Sacco</a></div>
+    </div>
+    <div id="tbox3">
+      <div class="title">
+        <h2>Supervisor</h2>
+      </div>
+      <p>Sign Up here to register as a supervisor. Please note you must be registered by a sacco first.</p>
+      <div><a class="button" style="background-color: #5AB9EA;" href="{% url 'fleet:sup-signup' %}">Supervisor</a></div>
+    </div>
+    <div id="tbox2">
+      <div class="title">
+        <h2>Owner</h2>
+      </div>
+      <p>Sign Up here to register an owner, you can register upto four cars.</p>
+      <div><a class="button" style="background-color: #567FE9;" href="{% url 'fleet:owner-signup' %}">Owner</a></div>
+    </div>
+</div>
+</div>
+<div id="copyright" class="container">
+
+  <h1>New approach to an old system</h1>
+  <h4>Easily manage your your fleet of matatus as an owner, supervisor or sacco.</h4>
+  <h1>Join our community</h1>
+</div>
+<div  id="portfolio" class="container">
+  <div class="column1">
+    <div class="box"> <a href="#"><img style="height: 183px;" src="{% static '/images/scr01.jpg' %}" alt="" class="image image-full" /></a>
+  <h3>Vestibulum venenatis</h3>
+  <p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+  <a href="{% url 'fleet:select' %}" class="button button-small">Etiam posuere</a> </div>
+  </div>
+  <div  id="portfolio" class="container">
+    <div class="column1">
+      <div class="box"> <a href="#"><img style="height: 183px;" src="{% static '/images/scr02.jpg' %}" alt="" class="image image-full" /></a>
+    <h3>Vestibulum venenatis</h3>
+    <p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+    <a href="{% url 'fleet:select' %}" class="button button-small">Etiam posuere</a> </div>
+    </div>
+    <div  id="portfolio" class="container">
+      <div class="column1">
+        <div class="box"> <a href="#"><img style="height: 183px;" src="{% static '/images/scr03.jpg' %}" alt="" class="image image-full" /></a>
+      <h3>Vestibulum venenatis</h3>
+      <p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+      <a href="{% url 'fleet:select' %}" class="button button-small">Etiam posuere</a> </div>
+      </div>
+    </div>
+
+{% include "fleet_base/partials/_footer.html" %}
+
 {% endblock %}

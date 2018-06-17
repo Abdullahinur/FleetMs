@@ -25,6 +25,20 @@ def home(request):
     return render(request, 'fleet_base/home/home.html')
 
 
+def ourClients(request):
+    '''
+    Function to render the client page
+    '''
+    return render(request, 'fleet_base/home/clients.html')
+
+
+def aboutUs(request):
+    '''
+    Function to render the about page
+    '''
+    return render(request, 'fleet_base/home/about.html')
+
+
 def select(request):
     '''
     View function to select the apppropriate signup page
