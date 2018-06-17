@@ -25,7 +25,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-
+CONTACT_US_EMAIL = config('CONTACT_US_EMAIL')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
@@ -150,3 +150,12 @@ AUTH_USER_MODEL = 'fleet_base.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Email settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = 'testmoringa12'
+DEFAULT_EMAIL_FROM = 'sarath4coding@gmail.com'

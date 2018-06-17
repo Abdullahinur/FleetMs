@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib.auth import views as auth_views
 
 from . import views
@@ -17,4 +17,6 @@ urlpatterns = [
     url(r'^loginViews/$', views.loginViews, name='loginViews'),
     url(r'^ourclients/$', views.ourClients, name='clients'),
     url(r'^aboutus/$', views.aboutUs, name='about'),
+    url(r'^email/', views.emailView, name='email'),
+    url(r'^success/', views.successView, name='success'),
 ]

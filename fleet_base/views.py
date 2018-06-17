@@ -4,6 +4,9 @@ from django.contrib.auth import login as user_login
 from django.contrib.auth import logout as user_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+# Create your views here.
+# for the email contact and Feedback
+from django.core.mail import BadHeaderError, send_mail
 from django.http import (Http404, HttpResponse, HttpResponseRedirect,
                          JsonResponse)
 from django.shortcuts import redirect, render
@@ -13,9 +16,29 @@ from owner.models import Owner
 from sacco.models import Sacco, Super_list
 from supervisor.models import Supervisor
 
-from .forms import OwnerSignUpForm, SaccoSignUpForm, SupervisorSignupForm
+from .forms import (ContactForm, OwnerSignUpForm, SaccoSignUpForm,
+                    SupervisorSignupForm)
 
-# Create your views here.
+
+def emailView(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['admin@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('fleet:success')
+    return render(request, "email.html", {'form': form})
+
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
 
 
 def home(request):
