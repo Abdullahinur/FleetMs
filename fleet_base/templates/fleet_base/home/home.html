@@ -1,5 +1,10 @@
 {% extends "fleet_base/base.html" %} {% load staticfiles %}
+{% block nav %}
 {% include "fleet_base/partials/_navbar.html" %}
+{% endblock  %}
 {% block content %}
-
+<h1>Hello</h1>
 {% endblock %}
+{% block scripts %}
+<script src="{% static "Js/scripts.js" %}" charset="utf-8"></script>
+{% endblock  %}
