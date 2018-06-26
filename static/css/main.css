@@ -175,9 +175,9 @@
     /* Safari and Chrome */
     -o-animation: fadein 2s;
     /* Opera */
-    position: absolute;
+    position: relative;
     top: 29%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -200%);
   }
 }
