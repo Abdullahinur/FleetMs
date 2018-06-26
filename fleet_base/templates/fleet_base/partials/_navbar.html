@@ -1,47 +1,39 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<div class="Navbar">
+   <div class="Navbar__Link Navbar__Link-brand">
       <a class="navbar-brand" href="{% url 'fleet:index' %}">Fleet MS</a>
     </div>
+    <div class="Navbar__Link Navbar__Link-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    {% if user.is_authenticated %}
+  <nav class="Navbar__Items">
+    <div class="Navbar__Link">
+      
+      <a  href="{% url 'fleet:logout' %}">Logout</a>
+    </div>
+        {% if user.roles == 'sacco' %}
+    <div class="Navbar__Link">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <a  href="">{{user.sacco.name.capitalize}}</a>
+    </div>
+    {%else%}
+    <div class="Navbar__Link">
 
+      <a  href="">{{user.first_name.capitalize}} {{user.last_name.capitalize}}</a>
+    </div>
+    {% endif %}
 
-      <ul class="nav navbar-nav navbar-right">
+  </nav>
+      {% else %}
+  <nav class="Navbar__Items Navbar__Items--right">
+    <div class="Navbar__Link">
 
+      <a  href="{% url 'fleet:select' %}">Signup</a>
+    </div>
+    <div class="Navbar__Link">
 
-        {% if user.is_authenticated %}
-         <li>
-            <a  href="{% url 'fleet:logout' %}">Logout</a>
-          </li>
-          {% if user.roles == 'sacco' %}
-           <li>
-            <a  href="">{{user.sacco.name.capitalize}}</a>
-          </li>
-          {%else%}
-           <li>
-            <a  href="">{{user.first_name.capitalize}} {{user.last_name.capitalize}}</a>
-          </li>
-          {% endif %}
-
-          {% else %}
-         <li>
-            <a  href="{% url 'fleet:select' %}">Signup</a>
-          </li>
-          <li>
-            <a  href="{% url 'fleet:loginViews' %}">Login</a>
-          </li>
-
-          {% endif %}
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      <a  href="{% url 'fleet:loginViews' %}">Login</a>
+    </div>
+    {% endif %}
+  </nav>
+</div>
