@@ -1,10 +1,13 @@
 /* ABDULL-AIS SPECIAL COCKTAIL SAUCE */
+body {
+  background-color: #242582
+}
 
 /* NAVBAR */
 
 @import "static/fonts/kingcross/stylesheet.css";
 .Navbar {
-  background-color: #46ACC2;
+  background-color: #2f2fa2;
   display: flex;
   padding: 16px;
   font-family: sans-serif;
@@ -231,7 +234,7 @@
     left: -60px;
     margin-top: 35px;
     width: 100%;
-    line-height: 28px;
+    line-height: 21px;
     height: 5vh;
   }
   #banner p {

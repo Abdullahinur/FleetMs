@@ -5,7 +5,13 @@
 {% endblock  %}
 {% block content %}
 {% include "fleet_base/partials/_banner.html" %}
-<h1>Hello</h1>
+<div class="container">
+  <div class="row">
+      <div style="background-color: #f64c72;" class="col-sm-4 jumbotron">HELLO1</div>
+      <div style="background-color: #99738e;" class="col-sm-4 jumbotron">HELLO2</div>
+      <div style="background-color: #553d67;" class="col-sm-4 jumbotron">HELLO3</div>
+  </div>
+</div>
 {% endblock %}
 {% block scripts %}
 <script src="{% static "Js/scripts.js" %}" charset="utf-8"></script>
