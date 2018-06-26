@@ -1,3 +1,7 @@
+/* ABDULL-AIS SPECIAL COCKTAIL SAUCE */
+
+/* NAVBAR */
+
 .Navbar {
   background-color: #46ACC2;
   display: flex;
@@ -15,7 +19,7 @@
 }
 
 .Navbar__Items--right {
-  margin-left:auto;
+  margin-left: auto;
 }
 
 .Navbar__Link-toggle {
@@ -23,27 +27,44 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .Navbar__Items,
-  .Navbar {
+  .Navbar__Items, .Navbar {
     flex-direction: column;
   }
-
-.Navbar__Items {
-    display:none;
+  .Navbar__Items {
+    display: none;
   }
-
-.Navbar__Items--right {
-    margin-left:0;
+  .Navbar__Items--right {
+    margin-left: 0;
   }
-
-.Navbar__ToggleShow {
+  .Navbar__ToggleShow {
     display: flex;
   }
-
-.Navbar__Link-toggle {
+  .Navbar__Link-toggle {
     align-self: flex-end;
     display: initial;
     position: absolute;
     cursor: pointer;
-   }
+  }
+}
+
+/* BANNER */
+
+/* TOO HOT */
+
+.banner {
+  width: 100%;
+  height: 20%;
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+  .banner {
+    height: 50vh;
+  }
 }
