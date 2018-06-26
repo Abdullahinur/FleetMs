@@ -20,34 +20,24 @@ class Supervisor(models.Model):
     def __str__(self):
         return self.first_name
 
-    # @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-    # def update_supervisor(sender, instance, created, **kwargs):
-    #     if created:
-    #         if instance.roles == 'supervisor':
-    #             Supervisor.objects.create(user=instance)
-            
-    #         else:
-    #             pass
-    # @receiver(post_save,sender=settings.AUTH_USER_MODEL)
-    # def save_supervisor(sender,instance,**kwargs):
-    #     if instance.roles == 'supervisor':
-    #         instance.supervisor.save()
-    #     else:
-    #         pass
-
-
-class Crew(models.Model):
-    first_name = models.CharField(max_length=30, unique=True)
-    last_name = models.CharField(max_length=30, unique=True)
+class Driver(models.Model):
+    fullname = models.CharField(max_length=100)
     id_number = models.IntegerField(unique=True)
-    date_of_birth = models.DateField(null=True)
-    vehicle_base = models.OneToOneField(Vehicle, related_name='vehicle_base')
+    sacco = models.ForeignKey(Sacco,null= True)
     profile_picture = models.ImageField(
-        upload_to='profile_pictures/crew', default='/static/img/placeholder.png')
+        upload_to='profile_pictures/driver', default='/static/img/placeholder.png')
 
     def __str__(self):
-        return self.first_name
+        return self.fullname
 
+class Conductor(models.Model):
+    fullname = models.CharField(max_length = 100)
+    id_number = models.CharField(max_length =100)
+    sacco = models.ForeignKey(Sacco,null = True)
+    profile_picture = models.ImageField(upload_to = 'profile_pictures/conductor',default='/static/img/placeholder.png')
+
+    def __str__(self):
+        return self.fullname
 
 class Issue(models.Model):
     subject = models.CharField(max_length=255)
@@ -69,3 +59,8 @@ class Message(models.Model):
 
     def __str__(self):
         return self.issue
+
+class AssignCrew(models.Model):
+    driver_id = models.ForeignKey(Driver)
+    conductor_id = models.ForeignKey(Conductor)
+    vehicle_id = models.ForeignKey(Vehicle)

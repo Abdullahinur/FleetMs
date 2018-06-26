@@ -25,7 +25,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-CONTACT_US_EMAIL = config('CONTACT_US_EMAIL')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
