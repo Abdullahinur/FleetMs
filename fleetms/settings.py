@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'fleet_base',
     'owner',
+    'sacco',
     'supervisor',
     'bootstrap3',
     'django.contrib.admin',
@@ -45,8 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sacco',
-
 ]
 
 MIDDLEWARE = [
@@ -88,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'fleetms',
         'USER': 'abdullahinur',
-        'PASSWORD': 'totpot90210'
+        'PASSWORD': 'totpot90210',
     }
 }
 DATABASES['default'].update(db_from_env)
@@ -132,7 +131,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+LOGIN_REDIRECT_URL = '/'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -150,3 +149,12 @@ AUTH_USER_MODEL = 'fleet_base.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Email settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = 'testmoringa12'
+DEFAULT_EMAIL_FROM = 'sarath4coding@gmail.com'

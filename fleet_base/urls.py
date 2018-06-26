@@ -1,9 +1,9 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib.auth import views as auth_views
 
 from . import views
 
-app_name='fleet'
+app_name = 'fleet'
 
 urlpatterns = [
     url(r'^accounts/login/$', auth_views.login),
@@ -15,4 +15,8 @@ urlpatterns = [
     url(r'^user-logout/$', views.logout, name='logout'),
     url(r'^login/$', views.login, name='login'),
     url(r'^loginViews/$', views.loginViews, name='loginViews'),
+    url(r'^ourclients/$', views.ourClients, name='clients'),
+    url(r'^aboutus/$', views.aboutUs, name='about'),
+    url(r'^email/', views.emailView, name='email'),
+    url(r'^success/', views.successView, name='success'),
 ]
