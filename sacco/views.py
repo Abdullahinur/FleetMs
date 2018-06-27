@@ -115,3 +115,11 @@ def owner_details(request, ownerID):
     owner = Owner.objects.filter(id=ownerID)
     car_owned = Vehicle.objects.filter(owner=ownerID)
     return render(request, 'sacco/all/ownerdetails.html', {"owner": owner, "car_owned": car_owned})
+
+def viewsup(request, saccoID):
+   '''
+   View function to display all that a user will be interacting with fromm the onset of the app.
+   '''
+   supervisor = Super_list.objects.filter(sacco = Sacco.objects.get(pk=request.user.sacco.id))
+   user = request.user
+   return render(request, 'sacco/all/dashboard.html', {"supervisor": supervisor, 'user':user })

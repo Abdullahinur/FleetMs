@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^profile/(\d+)', views.profile, name='profile'),
     url(r'^editSacco/(\d+)', views.edit_profile, name='edit'),
     url(r'^delete_sacco/(\d+)', views.delete_sacco, name='deleteSacco'),
+    url(r'^viewsup/(\d+)', views.viewsup, name='viewsup'),
 
 ]
 if settings.DEBUG:

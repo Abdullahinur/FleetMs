@@ -30,7 +30,7 @@
 
           <li><a href="{% url 'fleet:index' %}"><span class="glyphicon glyphicon-send"></span> Home</a></li>
           <li class="active"><a href="/sacco/profile/{{sacco.id}}"><span class="glyphicon glyphicon-plane"></span> Details</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
+
 
           <!-- Dropdown-->
           <li class="panel panel-default" id="dropdown">
@@ -42,31 +42,32 @@
             <div id="dropdown-lvl1" class="panel-collapse collapse">
               <div class="panel-body">
                 <ul class="nav navbar-nav">
-                  <li><a href="{% url 'fleet:logout' %}">Logout</a></li>
-                  <li><a href="#">Delete</a></li>
-                  <li><a href="#">Link</a></li>
+
+
 
                   <!-- Dropdown level 2 -->
                   <li class="panel panel-default" id="dropdown">
                     <a data-toggle="collapse" href="#dropdown-lvl2">
-                                    <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                    <span class="glyphicon glyphicon-on"></span> Supervisor Menu <span class="caret"></span>
                                 </a>
                     <div id="dropdown-lvl2" class="panel-collapse collapse">
                       <div class="panel-body">
                         <ul class="nav navbar-nav">
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
+                          <li><a href="#">View</a></li>
+                          <li><a href="#">Add</a></li>
+                          
                         </ul>
                       </div>
                     </div>
                   </li>
+                  <li><a href="{% url 'fleet:logout' %}">Logout</a></li>
+                  <li><a href="#">Delete</a></li>
                 </ul>
               </div>
             </div>
           </li>
 
-          <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+
 
         </ul>
       </div>

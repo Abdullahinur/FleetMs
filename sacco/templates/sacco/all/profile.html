@@ -7,10 +7,10 @@
   <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Edit Details</button>
 
   <div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
+    <div  style="border-radius: 2%;" class="w3-modal-content">
+      <div style="overflow: hidden; border-radius: 10%" class="w3-container">
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <div class="container" style="margin-top: 3vh; background: white; padding-top: 3vw; padding-bottom: 3vw; height: 70vw; border-radius: 10px;">
+        <div class="tinab container">
             <!-- Edit Sacco form -->
             <div class="col-md-8 col-lg-8 col-md-offset-2">
                 <form action="{% url 'sacco:edit' user.sacco.id %}" method="post" enctype="multipart/form-data">
