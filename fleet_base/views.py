@@ -80,36 +80,35 @@ def select(request):
 
 
 def ownerSignup(request):
-    '''
-    View function that will manage user signup
-    '''
-    if request.method == 'POST':
-        form = OwnerSignUpForm(request.POST)
+	'''
+	View function that will manage user signup
+	'''
+	if request.method == 'POST':
+		form = OwnerSignUpForm(request.POST)
 
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.roles = 'owner'
-            user.save()
+		if form.is_valid():
+			user = form.save(commit = False)
+			user.roles = 'owner'
+			user.save()
 
-            user.refresh_from_db()
-            user.owner.nat_id = form.cleaned_data.get('national_id')
-            user.owner.sacco = form.cleaned_data.get('sacco')
+			user.refresh_from_db()
+			user.owner.nat_id = form.cleaned_data.get('national_id')
+			user.owner.sacco = form.cleaned_data.get('sacco')
 
-            user.save()
+			user.save()
 
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            user_login(request, user)
-            messages.success(request, 'Success Signup created a new Owner')
-            return redirect('owner:editProfile')
-        else:
-            messages.error(request, f'Error having the form as valid')
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(username = user.username,password = raw_password)
+			user_login(request,user)
+			messages.success(request, 'Success Signup created a new Owner')
+			return redirect('owner:editProfile', user.owner.id)
+		else:
+			messages.error(request,f'Error having the form as valid')
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-    else:
-        form = OwnerSignUpForm()
-        return render(request, 'fleet_base/authentication/owner_signup.html', {"form": form})
-
+	else:
+		form = OwnerSignUpForm()
+		return render(request,'fleet_base/authentication/owner_signup.html',{"form":form})
 
 def saccoSignup(request):
     '''

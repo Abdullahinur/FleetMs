@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from owner.models import Owner, Vehicle
+from .models import Super_list, Sacco
 # Create your views here.
 
 @login_required(login_url='/loginViews/')
@@ -8,9 +9,9 @@ def dashboard(request):
     '''
     View function to display all that a user will be interacting with fromm the onset of the app.
     '''
-    supervisor = Super_list.objects.filter(
-        sacco=Sacco.objects.get(pk=request.user.sacco.id))
-    return render(request, 'sacco/all/dashboard.html', {"supervisor": supervisor})
+    supervisor = Super_list.objects.filter(sacco = Sacco.objects.get(pk=request.user.sacco.id))
+    owner = Owner.objects.filter(sacco = Sacco.objects.get(pk=request.user.sacco.id))
+    return render(request, 'sacco/all/dashboard.html', {"supervisor": supervisor, "owner": owner})
 
 # Supervisor section
 
@@ -91,3 +92,12 @@ def delete_sacco(request, saccoID):
     '''
     Sacco.objects.filter(pk=saccoID).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+# Owner section
+def owner_details(request, ownerID):
+    '''
+    View function to display an owner and all their details.
+    '''
+    owner = Owner.objects.filter(id=ownerID)
+    car_owned = Vehicle.objects.filter(owner=ownerID)
+    return render(request, 'sacco/all/ownerdetails.html', {"owner": owner, "car_owned": car_owned})
