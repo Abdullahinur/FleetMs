@@ -18,13 +18,13 @@ from sacco.models import Sacco
 class Owner(models.Model):
 
 
-    nat_id = models.IntegerField(unique=True, null=True)    
+    nat_id = models.IntegerField(unique=True, null=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     telephone = models.IntegerField(unique=True, null=True)
     profile_pic = models.ImageField(upload_to='ownerProfile/', blank=True)
     sacco = models.ForeignKey(Sacco, null=True)
-   
+
 
 
     def __str__(self):
@@ -39,24 +39,21 @@ class Owner(models.Model):
 class Vehicle(models.Model):
 
     """Summary
-    
+
     Attributes:
         capacity (TYPE): Description
         number_plate (TYPE): Description
     """
-    
+
     number_plate = models.CharField(max_length=200, null=True)
     capacity = models.IntegerField(null=True)
     owner = models.ForeignKey(Owner, null=True)
     sacco = models.ForeignKey(Sacco, null=True)
-
-    def __str(self):
-        """Summary
-        
-        Returns:
-            TYPE: Description
-        """
+    is_active = models.BooleanField(default = False)
+    def __str__(self):
         return self.number_plate
+
+
 
     @classmethod
     def my_vehicles(cls):
@@ -67,7 +64,7 @@ class Vehicle(models.Model):
         self.remove()
 
     def save_vehilces(self):
-        self.save()    
+        self.save()
 
     def update_vehicle(self, id):
         pass

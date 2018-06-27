@@ -1,3 +1,6 @@
+#center {
+  text-align: center;
+}
 @import url('https://fonts.googleapis.com/css?family=Raleway|Roboto');
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Raleway', sans-serif; */
@@ -90,6 +93,7 @@ button:hover {
 .get_started {
   color: white;
 }
+
 
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {

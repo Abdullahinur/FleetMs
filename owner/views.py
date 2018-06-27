@@ -1,3 +1,8 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from .models import Owner, Vehicle
+from supervisor.models import Issue
+from .forms import VehicleForm, EditProfile
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -5,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/loginViews/')
 def home(request):
-    vehicle = Vehicle.objects.filter(owner=request.user.owner)
+    vehicle = Vehicle.objects.filter(owner = request.user.owner)
     return render(request, 'owner/homepage.html', {"vehicle": vehicle})
 
 @login_required(login_url='/loginViews/')

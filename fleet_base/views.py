@@ -47,15 +47,15 @@ def home(request):
     Function to render the home page
     '''
     if request.user.is_authenticated:
-    	if request.user.roles == 'supervisor':
-    		return redirect('sup:dashboard')
+        if request.user.roles == 'supervisor':
+            return redirect('sup:dashboard')
 
-    	elif request.user.roles == 'owner':
-    		return redirect('owner:home')
-    	else:
-    		return redirect('sacco:sacco_home')
+        elif request.user.roles == 'owner':
+            return redirect('owner:home')
+        else:
+            return redirect('sacco:sacco_home')
     else:
-    	return render(request, 'fleet_base/home/home.html')
+        return render(request, 'fleet_base/home/home.html')
 
 
 def ourClients(request):
@@ -101,7 +101,7 @@ def ownerSignup(request):
 			user = authenticate(username = user.username,password = raw_password)
 			user_login(request,user)
 			messages.success(request, 'Success Signup created a new Owner')
-			return redirect('owner:editProfile')
+			return redirect('owner:editProfile', user.owner.id)
 		else:
 			messages.error(request,f'Error having the form as valid')
 			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -143,44 +143,50 @@ def saccoSignup(request):
 
 
 def supSignup(request):
-	'''
-	View function that will manage supervisor signup
-	'''
-	if request.method == 'POST':
-		form = SupervisorSignupForm(request.POST)
+    '''
+    View function that will manage supervisor signup
+    '''
+    if request.method == 'POST':
+        form = SupervisorSignupForm(request.POST)
 
-		if form.is_valid():
-			if Super_list.objects.filter(id_number = form.cleaned_data.get('id_number')).exists():
-				if Supervisor.objects.filter(id_number = form.cleaned_data.get('id_number')).exists():
-					messages.error(request,'Sorry! But a supervisor with that id number is already registered!')
-					return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-				else:
-					super_list = Super_list.objects.get(id_number = form.cleaned_data.get('id_number')).sacco
-					user = form.save(commit = False)
-					user.roles = 'supervisor'
+        if form.is_valid():
+            if Super_list.objects.filter(id_number=form.cleaned_data.get('id_number')).exists():
+                if Supervisor.objects.filter(id_number=form.cleaned_data.get('id_number')).exists():
+                    messages.error(
+                        request, 'Sorry! But a supervisor with that id number is already registered!')
+                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                else:
+                    super_list = Super_list.objects.get(
+                        id_number=form.cleaned_data.get('id_number')).sacco
+                    user = form.save(commit=False)
+                    user.roles = 'supervisor'
 
-					user.save()
+                    user.save()
 
-					user.refresh_from_db()
-					user.supervisor.sacco_base = super_list
-					user.supervisor.id_number = form.cleaned_data.get('id_number')
-					user.save()
+                    user.refresh_from_db()
+                    user.supervisor.sacco_base = super_list
+                    user.supervisor.id_number = form.cleaned_data.get(
+                        'id_number')
+                    user.save()
 
-					raw_password = form.cleaned_data.get('password1')
-					user = authenticate(username = user.username,password = raw_password)
-					user_login(request,user)
-					messages.success(request,f'Success! Welcome to you new dahsboard {user.first_name}')
-					return redirect('sup:editSupervisor')
-			else:
-				messages.error(request,'Error! Make sure your respective sacco has already registered you on the platform!')
-				return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-		else:
-			messages.error(request,f'Please make sure all fields have been filled validly')
-			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                    raw_password = form.cleaned_data.get('password1')
+                    user = authenticate(
+                        username=user.username, password=raw_password)
+                    user_login(request, user)
+                    messages.success(request, f'Success! Welcome to you new dahsboard {user.first_name}')
+                    return redirect('sup:editSupervisor')
+            else:
+                messages.error(
+                    request, 'Error! Make sure your respective sacco has already registered you on the platform!')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            messages.error(request, f'Please make sure all fields have been filled validly')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-	else:
-		form = SupervisorSignupForm()
-		return render(request,'fleet_base/authentication/supervisor_signup.html',{"form":form})
+    else:
+        form = SupervisorSignupForm()
+        return render(request, 'fleet_base/authentication/supervisor_signup.html', {"form": form})
+
 
 def login(request):
     '''
@@ -198,8 +204,8 @@ def login(request):
                 messages.success(request, f'Welcome back {request.user.first_name} {request.user.last_name}!')
                 return redirect('owner:home')
             elif user.roles == 'supervisor':
-            	messages.success(request, f'Welcome back {request.user.first_name} to your supervisor dashboard!')
-            	return redirect('sup:dashboard')
+                messages.success(request, f'Welcome back {request.user.first_name} to your supervisor dashboard!')
+                return redirect('sup:dashboard')
             else:
                 messages.success(
                     request, 'Success! {request.user.sacco.name} has succesfully logged in!')
