@@ -22,6 +22,15 @@
   {% endblock %}
 
 </head>
+{% if request.path == '/owner-signup/' %}
+<body style="overflow-x: hidden;">
+{% elif request.path == '/sup-signup/' %}
+<body style="overflow-x: hidden;">
+{% elif request.path == '/loginViews/' %}
+<body style="overflow-x: hidden;">
+{% else %}
+<body>
+  {% endif %}
 {% block nav %}
 {% endblock %}
     {% block content %}

@@ -1,300 +1,112 @@
-@import "static/fonts/kingcross/stylesheet.css";
-/* ABDULL-AIS SPECIAL COCKTAIL SAUCE */
+@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto');
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Raleway', sans-serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: #242582
+  background: url('static/images/bg01.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-/* NAVBAR */
-#kings {
+a {
+  color: inherit
 }
-.Navbar {
-  background-color: #2f2fa2;
-  display: flex;
-  padding: 16px;
-  font-family: sans-serif;
+
+a:visited {
+  color: inherit;
+}
+
+button:hover {
+  background-color: white;
+  color: transparent;
+  background: -webkit-linear-gradient(transparent, transparent),
+             url('static/images/bg01.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+ /* -webkit-background-clip: text; */
+ -webkit-background-clip: border;
   color: white;
-
 }
 
-.Navbar__Link {
-  padding-right: 8px;
 
+.one {
+  background-color: #333510;
+  height: 100vh;
+  opacity: 0.5
 }
 
-.Navbar__Items {
-  display: flex;
+.dave:hover {
+  box-shadow: 1px 1px grey;
+  height: 100vh;
+  opacity: 0.8;
 }
 
-.Navbar__Items--right {
-  margin-left: auto;
+.two {
+  background-color: darkslategrey;
+  height: 100vh;
+  opacity: 0.5
 }
 
-.Navbar__Link-toggle {
-  display: none;
+.three {
+  background-color: #6ba1b8;
+  height: 100vh;
+  opacity: 0.5
 }
 
-.navbar-brand {
-  font-size: 60px;
-  font-weight: bolder;
-  text-shadow: 1px 1px 1px white;
-  border-radius: 1%;
-  padding-top: 3vh;
-  font-family: 'kings_crossregular';
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    width: 50%;
-  }
-  .Navbar {
-    text-align: center;
-  }
-  .Navbar__Items, .Navbar {
-    flex-direction: column;
-  }
-  .Navbar__Items {
-    display: none;
-  }
-  .Navbar__Items--right {
-    margin-left: 0;
-  }
-  .Navbar__ToggleShow {
-    display: flex;
-  }
-  .Navbar__Link-toggle {
-    align-self: flex-end;
-    display: initial;
-    position: absolute;
-    cursor: pointer;
-  }
-  .navbar-brand {
-    font-size: 60px;
-    font-weight: bolder;
-    text-shadow: 1px 1px 1px white;
-    border-radius: 1%;
-    padding-left: 12vw;
-  }
-}
-
-/* BANNER */
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .Navbar__Link {
-    padding: 0em 4em 1em 1em;
-    margin: -2em 0em 0em 0em;
-  }
-
-  #kings {
-    height: 4vh;
-    width: 15vh;
-  }
-
-  #banner p {
-  font-size: 6vh;
-  color: aliceblue;
+.fleet-title {
   text-align: center;
-  animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  /* Firefox */
-  -webkit-animation: fadein 2s;
-  /* Safari and Chrome */
-  -o-animation: fadein 2s;
-  /* Opera */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding-top: 20vh;
+  color: white;
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.fleet-title h1 {
+  font-size: 70px;
+  font-family: 'Raleway', sans-serif;
 }
 
-@-moz-keyframes fadein {
-  /* Firefox */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.fleet-title h6 {
+  font-size: 23px;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 2em;
 }
 
-@-webkit-keyframes fadein {
-  /* Safari and Chrome */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.get_started {
+  background: transparent;
+  border: 2px solid white;
+  height: 10vh;
+  width: 80%;
+  font-size: 32px;
+  margin-top: 11vh;
+  font-family: 'Roboto', sans-serif;
 }
 
-@-o-keyframes fadein {
-  /* Opera */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.get_started {
+  color: white;
 }
-
-.banner {
-  width: 100%;
-  height: 20%;
-}
-
-.banner img {
-  height: 100%;
-  width: 100%;
-}
-
-}
-
-/* TOO HOT */
-
-#banner p {
-  font-size: 6vh;
-  color: aliceblue;
-  text-align: center;
-  animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  /* Firefox */
-  -webkit-animation: fadein 2s;
-  /* Safari and Chrome */
-  -o-animation: fadein 2s;
-  /* Opera */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes fadein {
-  /* Firefox */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadein {
-  /* Safari and Chrome */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes fadein {
-  /* Opera */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.banner {
-  width: 100%;
-  height: 20%;
-}
-
-.banner img {
-  height: 100%;
-  width: 100%;
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {
-  .banner {
-    height: 50vh;
-  }
-  /* CHOICES */
-  .floater {
-    margin-top: 2vh;
-
-  }
-  .floater.jumbotron a{
-    color: white;
-
-  }
-}
-
-/* BUTTON STYLES */
-
-.btn {
-  font-size: 0.875em;
-  display: block;
-  left: -60px;
-  margin-top: 35px;
-  width: 100%;
-}
-
-.jumbotron {
-  top: 50%;
-  text-align: center;
-  font-size: 30px;
-}
-
-@media only screen and (max-width: 768px) {
-  .btn {
-    font-size: 1.875em;
-    display: block;
-    left: -60px;
-    margin-top: 35px;
-    width: 100%;
-    line-height: 21px;
-    height: 5vh;
-  }
-  #banner p {
-    font-size: 21px;
-    color: aliceblue;
-    text-align: center;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s;
-    /* Firefox */
-    -webkit-animation: fadein 2s;
-    /* Safari and Chrome */
-    -o-animation: fadein 2s;
-    /* Opera */
-    position: relative;
-    top: 29%;
-    left: 50%;
-    transform: translate(-50%, -200%);
-  }
-}
-
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
+@media (max-width: 576px) {
+
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
+@media (min-width: 768px) {
+  ...
+}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
+@media (min-width: 992px) {
+  ...
+}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
+@media (min-width: 1200px) {
+  ...
+}

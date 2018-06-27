@@ -1,8 +1,8 @@
 <div class="Navbar">
-   <div style="padding-top: 1.5em;" class="Navbar__Link Navbar__Link-brand">
+   <div style="padding-top: 1.5em; opacity: 1;" class="Navbar__Link Navbar__Link-brand">
       <a class="navbar-brand" href="{% url 'fleet:index' %}">Fleet MS</a>
     </div>
-    <div class="Navbar__Link Navbar__Link-toggle">
+    <div style=" opacity: 1;" class="Navbar__Link Navbar__Link-toggle">
       <i class="fas fa-bars"></i>
     </div>
     {% if user.is_authenticated %}
