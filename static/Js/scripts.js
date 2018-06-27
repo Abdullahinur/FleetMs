@@ -1,10 +1,21 @@
-function classToggle() {
-  const navs = document.querySelectorAll('.Navbar__Items')
+$(function () {
+    $('.navbar-toggle').click(function () {
+        $('.navbar-nav').toggleClass('slide-in');
+        $('.side-body').toggleClass('body-slide-in');
+        $('#search').removeClass('in').addClass('collapse').slideUp(200);
 
-  navs.forEach(nav => nav.classList.toggle('Navbar__ToggleShow'));
-}
+        /// uncomment code for absolute positioning tweek see top comment in css
+        //$('.absolute-wrapper').toggleClass('slide-in');
 
-document.querySelector('.Navbar__Link-toggle')
-  .addEventListener('click', classToggle);
+    });
 
-document.body.banner += ' fade-out';
+   // Remove menu for searching
+   $('#search-trigger').click(function () {
+        $('.navbar-nav').removeClass('slide-in');
+        $('.side-body').removeClass('body-slide-in');
+
+        /// uncomment code for absolute positioning tweek see top comment in css
+        //$('.absolute-wrapper').removeClass('slide-in');
+
+    });
+});

@@ -1,5 +1,5 @@
 {%extends 'sacco/all/base.html'%} 
-{% load static %} 
+{% load static %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -22,15 +22,15 @@
                 <h3>TELEPHONE NUMBER: {{owner.telephone}}</h3>
             </div>
             {% endfor %}
-            
+
             <div>
-                <h3>CARS OWNED ARE: 
+                <h3>CARS OWNED ARE:
                     {% for car_owned in car_owned %}
                         {{car_owned.number_plate}}<br>
                     {% endfor %}
                 </h3>
             </div>
-            
+
         </div>
 
     </div>
