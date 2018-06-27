@@ -1,6 +1,6 @@
 <div class="Navbar">
-   <div class="Navbar__Link Navbar__Link-brand">
-      <a style="font-family: 'kings_crossregular';" class="navbar-brand" href="{% url 'fleet:index' %}">Fleet MS</a>
+   <div style="padding-top: 1.5em;" class="Navbar__Link Navbar__Link-brand">
+      <a class="navbar-brand" href="{% url 'fleet:index' %}">Fleet MS</a>
     </div>
     <div class="Navbar__Link Navbar__Link-toggle">
       <i class="fas fa-bars"></i>
@@ -28,11 +28,11 @@
   <nav class="Navbar__Items Navbar__Items--right">
     <div class="Navbar__Link">
 
-      <a  class="btn btn-primary" href="{% url 'fleet:select' %}">Signup</a>
+      <a  id="kings" class="btn btn-primary" href="{% url 'fleet:select' %}">Signup</a>
     </div>
     <div class="Navbar__Link">
 
-      <a  class="btn btn-default" href="{% url 'fleet:loginViews' %}">Login</a>
+      <a  id="kings" class="btn btn-default" href="{% url 'fleet:loginViews' %}">Login</a>
     </div>
     {% endif %}
   </nav>
