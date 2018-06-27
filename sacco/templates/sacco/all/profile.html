@@ -1,36 +1,65 @@
-{%extends 'sacco/all/base.html'%} 
+{%extends 'sacco/all/base.html'%}
 {% load static %}
+{% load bootstrap3 %}
 {% block content %}
-<div class="sidenav" style="height: 100vh; width: 40vw; background: grey;">
-    {% if profile.logo %}
-    <img src="{{profile.logo.url}}" alt="Sacco Logo" style="margin-top: 5vh; padding-left: 3vw; padding-right: 3vw; width: 10vw;"> 
-    {% else %}
-    <h1 style="color: white; font-size: 10vh; padding: 3vw;">NO LOGO UPLOADED</h1>
-    {% endif %}
-</div>
-<div class="container" style="width:60vw; float:right; display: inline block; padding-left: 5vw;">
-    <div class="row">
-        <div class="col-md-7">
-            <div>
-                <h3>SACCO NAME: {{profile.name|upper}}</h3>
-            </div>
-            <div>
-                <h4>SACCO REGISTRATION NUMBER: {{profile.registration_no}}</h4>
-            </div>
-            <div>
-                <h4>SACCO OFFICE LOCATION: {{profile.office_location}}</h4>
-            </div>
-            <div>
-                <h4>TELEPHONE NUMBER: {{profile.office_telephone}}</h4>
-            </div>
-            <div>
-                <h4>EMAIL ADDRESS: {{profile.office_email}}</h4>
-            </div>
-            <div>
-                <h4>SACCO DETAILS: {{profile.details}}</h4>
+<div style="text-align: center;" class="w3-container">
+
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Edit Details</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <div class="container" style="margin-top: 3vh; background: white; padding-top: 3vw; padding-bottom: 3vw; height: 70vw; border-radius: 10px;">
+            <!-- Edit Sacco form -->
+            <div class="col-md-8 col-lg-8 col-md-offset-2">
+                <form action="{% url 'sacco:edit' user.sacco.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <input type="submit" class="btn btn-success btn-sm btn-block">
+                </form>
             </div>
         </div>
 
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}
+
+
+
+
+
+{# <div class="sidenav" style="height: 100vh; width: 40vw; background: grey;">
+  {% if profile.logo %}
+  <img src="{{profile.logo.url}}" alt="Sacco Logo" style="margin-top: 5vh; padding-left: 3vw; padding-right: 3vw; width: 10vw;">
+  {% else %}
+  <h1 style="color: white; font-size: 10vh; padding: 3vw;">NO LOGO UPLOADED</h1>
+  {% endif %}
+</div>
+<div class="container" style="width:60vw; float:right; display: inline block; padding-left: 5vw;">
+  <div class="row">
+    <div class="col-md-7">
+      <div>
+        <h3>SACCO NAME: {{profile.name|upper}}</h3>
+      </div>
+      <div>
+        <h4>SACCO REGISTRATION NUMBER: {{profile.registration_no}}</h4>
+      </div>
+      <div>
+        <h4>SACCO OFFICE LOCATION: {{profile.office_location}}</h4>
+      </div>
+      <div>
+        <h4>TELEPHONE NUMBER: {{profile.office_telephone}}</h4>
+      </div>
+      <div>
+        <h4>EMAIL ADDRESS: {{profile.office_email}}</h4>
+      </div>
+      <div>
+        <h4>SACCO DETAILS: {{profile.details}}</h4>
+      </div>
+    </div>
+
+  </div>
+</div> #}

@@ -1,8 +1,9 @@
 {%extends 'sacco/all/base.html'%}
 {% block content %}
-<div class="row">
-  <div class="col-md-4" style="background: red; height: 100vh;">
-    <div style="text-align: center; margin-top: 10vh;">
+
+<div class="details">
+
+
       <h2>Sacco Details</h2>
       <h3>Name: {{profile.name|upper}}</h3>
       <h3>Registration number: {{profile.registration_no}}</h3>
@@ -10,17 +11,8 @@
       <h3>Tel number: {{profile.office_telephone}}</h3>
       <h3>Email: {{profile.office_email}}</h3>
       <h3>Additional Details: {{profile.details}}</h3>
-    </div>
-  </div>
-  <div class="col-md-4" style="background: green; height: 100vh;">
 
   </div>
-  <div class="col-md-4" style="background: yellow; height: 100vh;">
-
-  </div>
-
-</div>
-
 
 
 {% endblock %}
