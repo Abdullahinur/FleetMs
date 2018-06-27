@@ -1,57 +1,49 @@
 {%extends 'sacco/all/base.html'%}
 {% block content %}
+<div class="row">
+  <div class="col-md-4" style="background: red; height: 100vh;">
+    <div style="text-align: center; margin-top: 10vh;">
+      <h2>Sacco Details</h2>
+      <h3>Name: {{profile.name|upper}}</h3>
+      <h3>Registration number: {{profile.registration_no}}</h3>
+      <h3>Office location: {{profile.office_location}}</h3>
+      <h3>Tel number: {{profile.office_telephone}}</h3>
+      <h3>Email: {{profile.office_email}}</h3>
+      <h3>Additional Details: {{profile.details}}</h3>
+    </div>
+  </div>
+  <div class="col-md-4" style="background: green; height: 100vh;">
+
+  </div>
+  <div class="col-md-4" style="background: yellow; height: 100vh;">
+
+  </div>
+
+</div>
 
 
-<h1 style="text-align: center">SACCO DASHBOARD</h1>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2" style="background: red">
-            <!-- Side navigation -->
-            <div class="sidenav" style="width:auto;">
-                <a href="{% url 'sacco:profile' %}">About Sacco</a>
-                <a href="{% url 'sacco:createSupervisor' %}">Add Supervisor</a>
-                <a href="{% url 'sacco:edit' user.sacco.id %}">Edit Sacco</a>
-                <a href="#">Delete Sacco</a>
-            </div>
+
+{% endblock %}
+
+{# <h1 style="text-align: center">SACCO DASHBOARD</h1>
+<div class="row">
+    <div class="col-md-2">
+        <!-- Side navigation -->
+        <div class="sidenav" style="width: 17vw;">
+            <a href="{% url 'sacco:profile' %}">About Sacco</a>
+            <a href="{% url 'sacco:createSupervisor' %}">Add Supervisor</a>
+            <a href="{% url 'sacco:edit' user.sacco.id %}">Edit Sacco</a>
+            <a href="#">Delete Sacco</a>
         </div>
-        <div class="col-md-10">
-            <!-- Page content -->
-            <div class="container" >
-                <div class="Supervisors">
-                    <h4>SUPERVISOR LIST</h4>
-                    {% if supervisor %}
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Full Name</th>
-                                    <th>ID Number</th>
-                                    <th>Option</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-    
-                                    {% for supervisor in supervisor %}
-                                    <tr>
-                                        <td>{{supervisor.full_name}}</td>
-                                        <td>{{supervisor.id_number}}</td>
-                                        <td><a href="{% url 'sacco:editSupervisor' supervisor.id %}" class="btn btn-sm btn-success">Edit</a></td>
-                                        <td><a href="{% url 'sacco:deleteSupervisor' supervisor.id %}" class="btn btn-sm btn-danger">Delete</a></td>
-                                    </tr>
-                                    {% endfor %}
-    
-    
-                            </tbody>
-                        </table>
-                     {% else %}
-                            <div class="emptytable">
-                                <h3>There are no registered Supervisors just yet. <a href="{% url 'sacco:createSupervisor' %}">Click here to add</a> a supervisor</h3>
-    
-                            </div>
-                    {% endif %}
-    
-                </div>
-                <div class="owners">
-                    <h4>OWNERS REGISTERED IN THIS SACCO</h4>
+    </div>
+    <div class="col-md-9">
+        {% include "fleet_base/partials/_messages.html" %}
+        <!-- Page content -->
+        <div >
+
+            <div class="Supervisors">
+                <h4>SUPERVISOR LIST</h4>
+                {% if supervisor %}
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -71,13 +63,11 @@
                             </tr>
                             {% endfor %}
                         </tbody>
-    
+{% endif %}
                     </table>
                 </div>
             </div>
         </div>
-    
-    </div>
-</div>
 
-{% endblock %}
+    </div>
+</div> #}

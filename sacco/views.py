@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from owner.models import Owner, Vehicle
 from .models import Super_list, Sacco
+from .forms import EditProfile, Super_listForm
+from django.shortcuts import render, redirect
 # Create your views here.
 
 @login_required(login_url='/loginViews/')
@@ -11,7 +13,8 @@ def dashboard(request):
     '''
     supervisor = Super_list.objects.filter(sacco = Sacco.objects.get(pk=request.user.sacco.id))
     owner = Owner.objects.filter(sacco = Sacco.objects.get(pk=request.user.sacco.id))
-    return render(request, 'sacco/all/dashboard.html', {"supervisor": supervisor, "owner": owner})
+    profile = Sacco.objects.get(user=request.user)
+    return render(request, 'sacco/all/dashboard.html', {"supervisor": supervisor, "owner": owner, 'profile':profile})
 
 # Supervisor section
 

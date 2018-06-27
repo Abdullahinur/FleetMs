@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .forms import SupervisorForm,DriverForm,ConductorForm
-from .models import Supervisor,Driver,Conductor,AssignCrew
+from .forms import SupervisorForm,DriverForm,ConductorForm, IssueForm
+from .models import Supervisor,Driver,Conductor,AssignCrew, Issue
 from owner.models import Vehicle,Owner
 from django.contrib.auth.decorators import login_required
 
@@ -12,8 +12,8 @@ def home(request):
 	'''
 	this view shows the dashboard view
 	'''
-	matatus =  Vehicle.objects.filter(sacco = request.user.supervisor.sacco_base)[:5]
-	owners = Owner.objects.filter(sacco = request.user.supervisor.sacco_base)[:5]
+	matatus =  Vehicle.objects.filter(sacco = request.user.supervisor.sacco_base)
+	owners = Owner.objects.filter(sacco = request.user.supervisor.sacco_base)
 	return render(request, 'supervisor/dashboard/index.html',{"matatus":matatus,"owners":owners})
 
 @login_required(login_url='/loginViews/')
@@ -200,3 +200,26 @@ def deleteCrew(request,matId):
 	AssignCrew.objects.filter(vehicle_id = matId).delete()
 	messages.success(request,'You have succesfully deleted the crew from this matatu')
 	return redirect(request.META.get('HTTP_REFERER'))
+
+@login_required(login_url='/loginViews/')
+def create_issue(request):
+	form = IssueForm()
+	all_issues = Issue.objects.all().order_by('-id')
+	issues = all_issues.filter(supervisor_started=request.user.supervisor)
+	if request.method == 'POST':
+		form = IssueForm(request.POST)
+		if form.is_valid():
+			issue = form.save(commit=False)
+			issue.supervisor_started = request.user.supervisor
+			issue = issue.save()
+	else:
+		form = IssueForm()
+	return render(request, 'supervisor/dashboard/issue.html', {'form' : form, 'issues':issues,})
+
+def singleOwner(request,ownerId):
+	'''
+	This view will retrieve an owner instance
+	'''
+	owner = Owner.objects.get(id = ownerId)
+	vehicles = Vehicle.objects.filter(owner = ownerId)
+	return render(request,'supervisor/dashboard/singleOwner.html',{"owner":owner,"vehicles":vehicles})
